@@ -57,3 +57,5 @@
 - How Web apps / UI apps fetch data from backend :
     1. Web page Loads -> API -> Render
     2. Web page Loads -> Render -> API -> Render  => (Better UX)
+
+- Whenever state variable update, react triggers a reconciliation cycle(re-render the component)
