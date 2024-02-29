@@ -3,3 +3,6 @@ export const CDN_URL = //named export
 
 export const LOGO_URL =
   "https://img.freepik.com/free-vector/delivery-service-illustrated_23-2148505081.jpg?w=740&t=st=1708115596~exp=1708116196~hmac=05352d32d85f9e8693c85e12d651a4d2505d7ac4b37a3ae1c454fe92231e9e29";
+
+export const MENU_API =
+  "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.6868159&lng=83.2184815&restaurantId=";

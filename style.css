@@ -34,7 +34,7 @@
     margin: 20px;
     padding: 5px;
     width: 200px;
-    height: 400px;
+    height: auto;
 }
 
 .res-card:hover {
@@ -84,4 +84,16 @@
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.res-item {
+    width: 20%;
+    height: 20%;
+    object-fit: cover;
+}
+
+.user-card {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid black;
 }

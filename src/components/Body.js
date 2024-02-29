@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   // Local State Variable - Super powerful variale
@@ -8,8 +9,6 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
   const [searchText, setSearchText] = useState("");
-
-  console.log("Rendered");
 
   useEffect(() => {
     fetchData();
@@ -22,7 +21,8 @@ const Body = () => {
 
     const json = await data.json();
 
-    // console.log(json);
+    console.log("Body");
+    console.log(json);
 
     // Optional Chaining
     setListOfRestaurants(
@@ -31,10 +31,11 @@ const Body = () => {
     setFilteredRestaurants(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    // console.log(listOfRestaurants);
   };
+  console.log("Res List");
+  console.log(listOfRestaurants);
 
-  return listOfRestaurants.length == 0 ? (
+  return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -64,9 +65,9 @@ const Body = () => {
           onClick={() => {
             // Filter logic here
             const filteredList = listOfRestaurants.filter(
-              (res) => res.info.avgRating > 4.3
+              (res) => res.info.avgRating > 4
             );
-            setListOfRestaurants(filteredList);
+            setFilteredRestaurants(filteredList);
           }}
         >
           Top Rated Restaurants
@@ -75,10 +76,10 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             // Filter logic here
-            const sortedList = [...listOfRestaurants].sort(
+            const sortedList = [...filteredRestaurants].sort(
               (a, b) => b.info.avgRating - a.info.avgRating
             );
-            setListOfRestaurants(sortedList);
+            setFilteredRestaurants(sortedList);
           }}
         >
           Sort Restaurants by Rating
@@ -86,7 +87,12 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRestaurants.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resdata={restaurant} /> //not using keys(rerendering of all reslist) <<< index as a key <<<<<<< unique id(best practice-optimized)
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+          >
+            <RestaurantCard resdata={restaurant} />
+          </Link> //not using keys(rerendering of all reslist) <<< index as a key <<<<<<< unique id(best practice-optimized)
         ))}
       </div>
     </div>

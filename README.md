@@ -59,3 +59,7 @@
     2. Web page Loads -> Render -> API -> Render  => (Better UX)
 
 - Whenever state variable update, react triggers a reconciliation cycle(re-render the component)
+
+- 2 types of of Routing in web browser
+    1. Client side routing
+    2. Server side routing
