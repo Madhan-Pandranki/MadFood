@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   // Local State Variable - Super powerful variale
@@ -21,8 +22,8 @@ const Body = () => {
 
     const json = await data.json();
 
-    console.log("Body");
-    console.log(json);
+    // console.log("Body");
+    // console.log(json);
 
     // Optional Chaining
     setListOfRestaurants(
@@ -32,8 +33,14 @@ const Body = () => {
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-  console.log("Res List");
-  console.log(listOfRestaurants);
+  // console.log("Res List");
+  // console.log(listOfRestaurants);
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false) {
+    return <h1>offline</h1>;
+  }
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
