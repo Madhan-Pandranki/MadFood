@@ -63,3 +63,19 @@
 - 2 types of of Routing in web browser
     1. Client side routing
     2. Server side routing
+
+- Prop Drilling : data used by the leaf which is send by parent/root by passing through intermediate parents. (Avoid prop drilling in large applications)
+
+- React-Context : use to avoid prop drilling (like global objects)
+
+- Redux:
+    Writing data : event => dispatch(Action) => calls reducer(function) => modify slice of redux store
+    Reading data : slice of Redux => selector => display (subscribing to the store)
+
+- Redux Toolkit:
+    Install @reduxjs/toolkit and reat-redux
+    Build our store
+    Connect our store to our app
+    Slice(cartSlice)
+    dispatch(action)
+    selector

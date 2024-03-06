@@ -12,6 +12,7 @@ class UserClass extends React.Component {
       },
     };
   }
+
   async componentDidMount() {
     const data = await fetch("https://api.github.com/users/Madhan-Pandranki");
     const json = await data.json();
@@ -21,6 +22,7 @@ class UserClass extends React.Component {
     });
     console.log(json);
   }
+
   render() {
     return (
       <div className="user-card">

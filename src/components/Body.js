@@ -1,8 +1,9 @@
-import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   // Local State Variable - Super powerful variale
@@ -10,6 +11,8 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
   const [searchText, setSearchText] = useState("");
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -34,7 +37,7 @@ const Body = () => {
     );
   };
   // console.log("Res List");
-  // console.log(listOfRestaurants);
+  console.log(listOfRestaurants);
 
   const onlineStatus = useOnlineStatus();
 
@@ -42,12 +45,14 @@ const Body = () => {
     return <h1>offline</h1>;
   }
 
+  const { loggedInUser, setUserName } = useContext(UserContext);
+
   return listOfRestaurants.length == 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
       <div className="filter flex mx-48">
-        <div className="m-4 p-4">
+        <div className="m-1 p-4">
           <input
             type="text"
             className="search-box border border-solid border-black rounded-lg"
@@ -57,7 +62,7 @@ const Body = () => {
             }}
           />
           <button
-            className="px-4 py-1 bg-green-100 m-4 rounded-lg hover:bg-green-200"
+            className="px-4 py-1 bg-green-100 m-1 rounded-lg hover:bg-green-200"
             onClick={() => {
               // Filter the restaurants ans update the UI
               //searchText
@@ -70,7 +75,7 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div className="m-4 p-4 flex items-center">
+        <div className="m-1 p-4 flex items-center">
           <button
             className="filter-btn px-4 py-1 bg-gray-100 rounded-lg hover:bg-gray-200"
             onClick={() => {
@@ -84,7 +89,7 @@ const Body = () => {
             Top Rated Restaurants
           </button>
         </div>
-        <div className="m-4 p-4 flex items-center">
+        <div className="m-1 p-4 flex items-center">
           <button
             className="filter-btn px-4 py-1 bg-gray-100 rounded-lg hover:bg-gray-200"
             onClick={() => {
@@ -98,6 +103,17 @@ const Body = () => {
             Sort Restaurants by Rating
           </button>
         </div>
+        <div className="m-1 p-4 flex items-center">
+          <label className="pr-1">User Name: </label>
+          <input
+            type="text"
+            className="search-box border border-solid border-black rounded-lg pl-1"
+            value={loggedInUser}
+            onChange={(e) => {
+              setUserName(e.target.value);
+            }}
+          />
+        </div>
       </div>
       <div className="res-container flex flex-wrap mx-48">
         {filteredRestaurants.map((restaurant) => (
@@ -105,7 +121,12 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
           >
-            <RestaurantCard resdata={restaurant} />
+            {/* if the restaurant is promoted then add promoted label */}
+            {restaurant.info.aggregatedDiscountInfoV3?.discountTag ? (
+              <RestaurantCardPromoted resdata={restaurant} />
+            ) : (
+              <RestaurantCard resdata={restaurant} />
+            )}
           </Link> //not using keys(rerendering of all reslist) <<< index as a key <<<<<<< unique id(best practice-optimized)
         ))}
       </div>
