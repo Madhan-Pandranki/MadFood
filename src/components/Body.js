@@ -37,7 +37,7 @@ const Body = () => {
     );
   };
   // console.log("Res List");
-  console.log(listOfRestaurants);
+  // console.log(listOfRestaurants);
 
   const onlineStatus = useOnlineStatus();
 
@@ -55,6 +55,7 @@ const Body = () => {
         <div className="m-1 p-4">
           <input
             type="text"
+            data-testid="searchInput"
             className="search-box border border-solid border-black rounded-lg"
             value={searchText}
             onChange={(e) => {
@@ -62,7 +63,7 @@ const Body = () => {
             }}
           />
           <button
-            className="px-4 py-1 bg-green-100 m-1 rounded-lg hover:bg-green-200"
+            className="px-4 py-1 bg-green-100 m-1 rounded-lg hover:bg-green-200 shadow-lg"
             onClick={() => {
               // Filter the restaurants ans update the UI
               //searchText
@@ -77,7 +78,7 @@ const Body = () => {
         </div>
         <div className="m-1 p-4 flex items-center">
           <button
-            className="filter-btn px-4 py-1 bg-gray-100 rounded-lg hover:bg-gray-200"
+            className="filter-btn px-4 py-1 bg-gray-100 rounded-lg hover:bg-gray-200 shadow-lg"
             onClick={() => {
               // Filter logic here
               const filteredList = listOfRestaurants.filter(
@@ -91,7 +92,7 @@ const Body = () => {
         </div>
         <div className="m-1 p-4 flex items-center">
           <button
-            className="filter-btn px-4 py-1 bg-gray-100 rounded-lg hover:bg-gray-200"
+            className="filter-btn px-4 py-1 bg-gray-100 rounded-lg hover:bg-gray-200 shadow-lg"
             onClick={() => {
               // Filter logic here
               const sortedList = [...filteredRestaurants].sort(

@@ -3,9 +3,15 @@ import { CDN_URL } from "../utils/constants";
 const RestaurantCard = (props) => {
   const { resdata } = props;
 
+  // console.log(resdata);
+
   const { name, cuisines, avgRating, cloudinaryImageId, sla } = resdata?.info;
+
   return (
-    <div className="res-card m-4 w-[250px] h-auto bg-gray-100 rounded-lg hover:bg-gray-200 overflow-hidden">
+    <div
+      data-testid="resCard"
+      className="res-card m-4 w-[250px] h-auto bg-gray-100 rounded-lg hover:bg-gray-200 overflow-hidden shadow-lg"
+    >
       <img
         className="res-logo rounded-lg h-[150px] w-72 object-cover"
         alt="res-logo"
@@ -18,9 +24,7 @@ const RestaurantCard = (props) => {
         {" • "}🕛{sla.slaString}
       </h4>
       {/* <h4 className="px-4 py-1"></h4> */}
-      <h4 className="p-2 text-gray-600 truncate">
-        {cuisines.join(", ")}
-      </h4>
+      <h4 className="p-2 text-gray-600 truncate">{cuisines.join(", ")}</h4>
     </div>
   );
 };

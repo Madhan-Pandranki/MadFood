@@ -12,7 +12,7 @@ const Header = () => {
   // console.log(data);
 
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
+  // console.log(cartItems);
 
   return (
     <div className="flex justify-between shadow-lg m-2 bg-green-100 rounded-lg sm:bg-yellow-100 lg:bg-pink-100">
