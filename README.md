@@ -19,7 +19,7 @@
 - HTTPS
 - Tree Shaking - remove unused code
 
-- Namste Food
+- MadFood
     1. Header
         1. Logo
         2. Nav items
