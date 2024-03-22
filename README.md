@@ -20,39 +20,39 @@
 - Tree Shaking - remove unused code
 
 - Namste Food
-    Header
-        Logo
-        Nav items
-    Body
-        Search
-        RestaurantContainer
-            RestaurantCard
-                Image
-                Name, Rating, Cuisine, Delivery Time
-    Footer
-        Copyrights
-        Links
-        Address
-        Contact info
+    1. Header
+        1. Logo
+        2. Nav items
+    2. Body
+        1. Search
+        2. RestaurantContainer
+            1. RestaurantCard
+                1. Image
+                2. Name, Rating, Cuisine, Delivery Time
+    3. Footer
+        1. Copyrights
+        2. Links
+        3. Address
+        4. Contact info
 
 - Two types of Export/Import:
-    Default Export/Import
-        export default Component
-        import Component from "path";
+    1. Default Export/Import
+        1. export default Component
+        2. import Component from "path";
 
-    Named Export/Import
-        export const Component
-        import {Component} from "path";
+    2. Named Export/Import
+        1. export const Component
+        2. import {Component} from "path";
 
 - React Hooks
-    Normal JS utility functions
-        UseState() - Superpowerful state variables in React
-        UseEffect()
+    1. Normal JS utility functions
+        1. UseState() - Superpowerful state variables in React
+        2. UseEffect()
 
 - Reconciliation Algorithm (React Fiber)
-    Eg: 7 ResCards => 3 filter cards
+    1. Eg: 7 ResCards => 3 filter cards
 
-    Virtual DOM is a representation of actual DOM
+    2. Virtual DOM is a representation of actual DOM
 
 - How Web apps / UI apps fetch data from backend :
     1. Web page Loads -> API -> Render
@@ -69,30 +69,30 @@
 - React-Context : use to avoid prop drilling (like global objects)
 
 - Redux:
-    Writing data : event => dispatch(Action) => calls reducer(function) => modify slice of redux store
-    Reading data : slice of Redux => selector => display (subscribing to the store)
+    1. Writing data : event => dispatch(Action) => calls reducer(function) => modify slice of redux store
+    2. Reading data : slice of Redux => selector => display (subscribing to the store)
 
 - Redux Toolkit:
-    Install @reduxjs/toolkit and reat-redux
-    Build our store
-    Connect our store to our app
-    Slice(cartSlice)
-    dispatch(action)
-    selector
+    1. Install @reduxjs/toolkit and reat-redux
+    2. Build our store
+    3. Connect our store to our app
+    4. Slice(cartSlice)
+    5. dispatch(action)
+    6. selector
 
 - Types of Testing
-    Unit Testing
-    Integration Testing
-    End to end Testing (e2e testing)
+    1. Unit Testing
+    2. Integration Testing
+    3. End to end Testing (e2e testing)
 
 - Setting up Testing in our app
-    Install React Testing Library
-    Install jest
-    Install Babel dependencies
-    Configure Babel
-    Configure Parcel config file to disable default babel transpilation
-    Jest configuration => npx jest --init
-    Install jsdom library -> like a browser for testing
-    Install @babel/preset-react -> to make JSX work in test cases
-    Include @babel/preset-react in our babel config
-    Install @testing-library/jest-dom
+    1. Install React Testing Library
+    2. Install jest
+    3. Install Babel dependencies
+    4. Configure Babel
+    5. Configure Parcel config file to disable default babel transpilation
+    6. Jest configuration => npx jest --init
+    7. Install jsdom library -> like a browser for testing
+    8. Install @babel/preset-react -> to make JSX work in test cases
+    9. Include @babel/preset-react in our babel config
+    10. Install @testing-library/jest-dom
